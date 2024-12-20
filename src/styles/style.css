@@ -1,0 +1,102 @@
+@import url("./navbar.css");
+@import url("./home.css");
+@import url("./about.css");
+@import url("./project.css");
+@import url("./experience.css");
+@import url("./contact.css");
+
+:root {
+  color-scheme: light dark;
+
+  --light-bg: #f0f0f0;
+  --dark-bg: #393e46;
+  --light-text: #393e46;
+  --dark-text: #f2f2f2;
+  --light-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  --dark-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+  --accent: tomato;
+
+  --main-bg: var(--light-bg);
+  --main-text: var(--light-text);
+  --main-shadow: var(--light-shadow);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  scroll-behavior: smooth;
+  outline: none;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--main-text);
+}
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12rem 0;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h3 {
+  position: absolute;
+  top: 7rem;
+  font-size: 2rem;
+}
+
+h3 span {
+  color: var(--accent);
+}
+
+.accented {
+  color: var(--accent) !important;
+}
+
+@media screen and (max-width: 1536px) {
+  section {
+    max-width: 1200px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  section {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  section {
+    max-width: 800px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  section {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  section {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,74 @@
+.project-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.project-box {
+  border: 1px solid var(--main-text);
+  border-radius: 0.7rem;
+  padding: 0.5rem 2rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 40vw;
+  max-width: 500px;
+  box-shadow: var(--main-shadow);
+}
+
+.project-box h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.project-box p {
+  font-size: 1rem;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.project-box img {
+  width: 80%;
+  border-radius: 0.7rem;
+}
+
+.project-box .buttons {
+  display: flex;
+  gap: 4rem;
+}
+
+.project-box .buttons a {
+  background-color: var(--main-text);
+  color: var(--main-bg);
+  text-decoration: none;
+  padding: 0.3rem 1rem;
+  border: 1px solid var(--main-text);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.project-box .buttons a:nth-child(2) {
+  background-color: var(--main-bg);
+  color: var(--main-text);
+  border: 1px solid var(--main-text);
+}
+
+.project-box .buttons a:hover {
+  background-color: var(--accent);
+  border: 1px solid var(--main-bg);
+  color: var(--main-text);
+}
+
+@media screen and (max-width: 768px) {
+  .project-boxes {
+    grid-template-columns: 1fr;
+  }
+
+  .project-box {
+    width: 80vw;
+  }
+}

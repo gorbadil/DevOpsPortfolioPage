@@ -1,0 +1,96 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 10%;
+}
+
+.hamburger,
+.hamburger-links {
+  display: none;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--main-text);
+  letter-spacing: 3px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.links a,
+.links span {
+  color: var(--main-text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.links span {
+  font-size: 1.5rem;
+}
+
+.links a:hover,
+.links span:hover {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.scrolled {
+  background-color: var(--main-bg);
+  box-shadow: var(--main-shadow);
+  padding: 1.5rem 10%;
+  transition: padding 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: var(--main-text);
+      border-radius: 5px;
+    }
+  }
+  .hamburger-links.show {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    right: 5%;
+    top: 80%;
+    gap: 1rem;
+    background-color: var(--main-bg);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--main-shadow);
+  }
+  .hamburger-links.show a {
+    text-decoration: none;
+    color: var(--main-text);
+    font-size: 1.5rem;
+  }
+  .hamburger-links.show a:hover {
+    color: var(--accent);
+  }
+}
