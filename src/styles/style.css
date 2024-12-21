@@ -86,16 +86,18 @@ h3 span {
 @media screen and (max-width: 768px) {
   section {
     max-width: 600px;
+    font-size: 90%;
   }
 }
 
 @media screen and (max-width: 640px) {
   section {
     max-width: 500px;
+    font-size: 80%;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   section {
     max-width: 100%;
   }
