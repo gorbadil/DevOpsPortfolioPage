@@ -1,3 +1,8 @@
+// Constants
+
+const y = new Date();
+const year = y.getFullYear();
+
 // Variables
 const light_dark = document.querySelector("#light-dark");
 const navbar = document.querySelector(".navbar");
@@ -5,20 +10,40 @@ const navbar = document.querySelector(".navbar");
 const sections = document.querySelectorAll("section");
 const hamburger = document.querySelector(".hamburger");
 const hamburgerLinks = document.querySelector(".hamburger-links");
+const footspan = document.querySelector("#footspan");
+footspan.innerHTML = year;
 
 // Functions
 function changeTheme() {
   const root = document.querySelector(":root");
 
   if (light_dark.innerHTML === "⏾") {
-    root.style.setProperty("--main-bg", getComputedStyle(root).getPropertyValue("--light-bg"));
-    root.style.setProperty("--main-text", getComputedStyle(root).getPropertyValue("--light-text"));
-    root.style.setProperty("--main-shadow", getComputedStyle(root).getPropertyValue("--light-shadow"));
+    root.style.setProperty(
+      "--main-bg",
+      getComputedStyle(root).getPropertyValue("--light-bg"),
+    );
+    root.style.setProperty(
+      "--main-text",
+      getComputedStyle(root).getPropertyValue("--light-text"),
+    );
+    root.style.setProperty(
+      "--main-shadow",
+      getComputedStyle(root).getPropertyValue("--light-shadow"),
+    );
     light_dark.innerHTML = "☀︎";
   } else {
-    root.style.setProperty("--main-bg", getComputedStyle(root).getPropertyValue("--dark-bg"));
-    root.style.setProperty("--main-text", getComputedStyle(root).getPropertyValue("--dark-text"));
-    root.style.setProperty("--main-shadow", getComputedStyle(root).getPropertyValue("--dark-shadow"));
+    root.style.setProperty(
+      "--main-bg",
+      getComputedStyle(root).getPropertyValue("--dark-bg"),
+    );
+    root.style.setProperty(
+      "--main-text",
+      getComputedStyle(root).getPropertyValue("--dark-text"),
+    );
+    root.style.setProperty(
+      "--main-shadow",
+      getComputedStyle(root).getPropertyValue("--dark-shadow"),
+    );
     light_dark.innerHTML = "⏾";
   }
 }
