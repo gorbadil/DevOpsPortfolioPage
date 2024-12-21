@@ -43,7 +43,6 @@ function accentLink() {
     const rect = section.getBoundingClientRect();
     if (rect.top <= 270 && rect.bottom >= 270) {
       link.classList.add("accented");
-      console.log(link);
     } else {
       link.classList.remove("accented");
     }

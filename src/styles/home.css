@@ -39,6 +39,7 @@
 
 .home-buttons {
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
@@ -97,6 +98,7 @@
 @media screen and (max-width: 768px) {
   .home-container {
     flex-direction: column-reverse;
+    text-align: center;
     gap: 2rem;
   }
 

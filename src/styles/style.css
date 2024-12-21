@@ -52,7 +52,10 @@ section {
 h3 {
   position: absolute;
   top: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 2rem;
+  text-align: center;
 }
 
 h3 span {

@@ -79,6 +79,11 @@
 
   .about-content {
     width: 90%;
+    p {
+      text-indent: 1.5rem;
+      text-align: justify;
+      line-height: 2;
+    }
   }
 
   .about-img img {
