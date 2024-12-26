@@ -5,7 +5,7 @@ function Home() {
     <section id="home">
       <div className="home-container">
         <div className="home-content">
-          <h5>Hi, I'm</h5>
+          <h5>Hi, I&apos;m</h5>
           <h1>Ersin Mutlu</h1>
           <p>Cloud & DevOps Engineer</p>
           <div className="home-buttons">

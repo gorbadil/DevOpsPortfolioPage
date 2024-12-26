@@ -3,10 +3,9 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Blog from "./Pages/Blog";
-import BlogPost from "./Components/BlogPost";
 import Contact from "./Pages/Contact";
 import Experience from "./Pages/Experience";
-import Projects from "./Pages/Projects";
+// import Projects from "./Pages/Projects";
 import "./assets/styles/style.css";
 
 export default function App() {

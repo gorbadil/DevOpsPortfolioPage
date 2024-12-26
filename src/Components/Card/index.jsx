@@ -1,4 +1,8 @@
-import React from "react";
+import PropTypes from "prop-types";
+
+Card.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 function Card({ post }) {
   const handleClick = (id) => {

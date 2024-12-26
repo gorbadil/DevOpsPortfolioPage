@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 const DataContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
