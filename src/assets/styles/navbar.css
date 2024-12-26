@@ -6,7 +6,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 10%;
+  padding: 2rem 10%;
+  background-color: var(--main-bg);
+  box-shadow: var(--main-shadow);
 }
 
 .hamburger,

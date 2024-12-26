@@ -4,18 +4,31 @@
   gap: 1rem;
 }
 
+.project-info {
+  /* cursor: pointer; */
+}
+
 .project-box {
   border: 1px solid var(--main-text);
   border-radius: 0.7rem;
   padding: 0.5rem 2rem 0.7rem;
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* grid-template-rows: 2fr 1fr 40px; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
   align-items: center;
+  place-items: center;
   gap: 1rem;
   width: 40vw;
   max-width: 500px;
   box-shadow: var(--main-shadow);
+}
+
+.project-box:hover {
+  border: 1px solid var(--accent);
 }
 
 .project-box h4 {
@@ -38,7 +51,23 @@
 
 .project-box .buttons {
   display: flex;
-  gap: 4rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  div {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+  }
+  div:nth-child(2)::after {
+    position: absolute;
+    top: -0.75rem;
+    left: -10%;
+    content: "";
+    display: block;
+    width: 120%;
+    height: 1.5px;
+    background-color: var(--accent);
+  }
 }
 
 .project-box .buttons a {
@@ -49,9 +78,10 @@
   border: 1px solid var(--main-text);
   border-radius: 0.5rem;
   transition: background-color 0.3s;
+  text-align: center;
 }
 
-.project-box .buttons a:nth-child(2) {
+.project-box .buttons a:nth-child(2n-1) {
   background-color: var(--main-bg);
   color: var(--main-text);
   border: 1px solid var(--main-text);

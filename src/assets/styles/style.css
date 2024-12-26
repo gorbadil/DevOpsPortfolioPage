@@ -4,6 +4,7 @@
 @import url("./project.css");
 @import url("./experience.css");
 @import url("./contact.css");
+@import url("./blog.css");
 
 :root {
   color-scheme: light dark;
@@ -16,9 +17,9 @@
   --dark-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
   --accent: tomato;
 
-  --main-bg: var(--light-bg);
-  --main-text: var(--light-text);
-  --main-shadow: var(--light-shadow);
+  --main-bg: var(--dark-bg);
+  --main-text: var(--dark-text);
+  --main-shadow: var(--dark-shadow);
 }
 
 * {
@@ -62,8 +63,21 @@ h3 span {
   color: var(--accent);
 }
 
+p h3 {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
 .accented {
   color: var(--accent) !important;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1536px) {
