@@ -5,18 +5,10 @@ Card.propTypes = {
 };
 
 function Card({ post }) {
-  const handleClick = (id) => {
-    console.log(id);
-  };
   return (
     <div className="project-box">
-      <img
-        onClick={() => handleClick(post.id)}
-        className="project-info"
-        src={post.image}
-        alt=""
-      />
-      <div onClick={() => handleClick(post.id)} className="project-info">
+      <img className="project-info" src={post.image} alt="" />
+      <div className="project-info">
         <h4>{post.name}</h4>
         <p>{post.desc}</p>
       </div>
