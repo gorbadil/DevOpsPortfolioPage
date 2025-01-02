@@ -5,6 +5,8 @@ Card.propTypes = {
 };
 
 function Card({ post }) {
+  const enLinks = ["gitMarkdownEn", "mediumEn"];
+  const trLinks = ["gitMarkdownTr", "mediumTr"];
   return (
     <div className="project-box">
       <img className="project-info" src={post.image} alt="" />
@@ -14,21 +16,25 @@ function Card({ post }) {
       </div>
       <div className="buttons">
         <div>
-          <a target="_blank" href={post.gitMarkdownEn} className="btn">
-            Github/En
-          </a>
-          <a target="_blank" href={post.mediumEn} className="btn">
-            Medium/En
-          </a>
+          {enLinks.map((link) => {
+            if (post[link] === "") return null;
+            return (
+              <a key={link} target="_blank" href={post[link]} className="btn">
+                {link === "gitMarkdownEn" ? "Github/En" : "Medium/En"}
+              </a>
+            );
+          })}
         </div>
 
         <div>
-          <a target="_blank" href={post.gitMarkdownTr} className="btn">
-            Github/Tr
-          </a>
-          <a target="_blank" href={post.mediumTr} className="btn">
-            Medium/Tr
-          </a>
+          {trLinks.map((link) => {
+            if (post[link] === "") return null;
+            return (
+              <a key={link} target="_blank" href={post[link]} className="btn">
+                {link === "gitMarkdownTr" ? "Github/Tr" : "Medium/Tr"}
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>
