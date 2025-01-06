@@ -14,6 +14,9 @@ RUN npm run build
 # nginx stage
 FROM nginx:stable-alpine
 
+# Copy config nginx
+COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
