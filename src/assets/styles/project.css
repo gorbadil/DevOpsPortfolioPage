@@ -12,9 +12,7 @@
   border: 1px solid var(--main-text);
   border-radius: 0.7rem;
   padding: 0.5rem 2rem 0.7rem;
-  /* display: grid; */
-  /* grid-template-columns: 1fr; */
-  /* grid-template-rows: 2fr 1fr 40px; */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,6 +23,16 @@
   width: 40vw;
   max-width: 500px;
   box-shadow: var(--main-shadow);
+  .badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: bold;
+    background-color: var(--accent);
+    color: var(--main-bg);
+    padding: 0.25rem 0.5rem;
+    border-radius: calc(0.7rem - 1px);
+  }
 }
 
 .project-box:hover {
@@ -46,7 +54,8 @@
 
 .project-box img {
   width: 80%;
-  border-radius: 0.7rem;
+  height: 50%;
+  object-fit: contain;
 }
 
 .project-box .buttons {

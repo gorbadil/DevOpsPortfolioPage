@@ -1,37 +1,64 @@
 import PropTypes from "prop-types";
 
 Card.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    domain: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    en: PropTypes.shape({
+      desc: PropTypes.string.isRequired,
+      git: PropTypes.string.isRequired,
+      medium: PropTypes.string.isRequired,
+    }),
+    tr: PropTypes.shape({
+      desc: PropTypes.string.isRequired,
+      git: PropTypes.string.isRequired,
+      medium: PropTypes.string.isRequired,
+    }),
+  }),
 };
 
 function Card({ post }) {
-  const enLinks = ["gitMarkdownEn", "mediumEn"];
-  const trLinks = ["gitMarkdownTr", "mediumTr"];
+  const links = ["git", "medium"];
+  if (post.type !== "Blog") {
+    return null;
+  }
   return (
     <div className="project-box">
+      <div className="badge">{post.domain}</div>
       <img className="project-info" src={post.image} alt="" />
       <div className="project-info">
-        <h4>{post.name}</h4>
-        <p>{post.desc}</p>
+        <p>{post.en.desc}</p>
       </div>
       <div className="buttons">
         <div>
-          {enLinks.map((link) => {
-            if (post[link] === "") return null;
+          {links.map((link) => {
+            if (post.en[link] === "") return null;
             return (
-              <a key={link} target="_blank" href={post[link]} className="btn">
-                {link === "gitMarkdownEn" ? "Github/En" : "Medium/En"}
+              <a
+                key={"en" + link}
+                target="_blank"
+                href={post.en[link]}
+                className="btn"
+              >
+                {link === "git" ? "Github/En" : "Medium/En"}
               </a>
             );
           })}
         </div>
 
         <div>
-          {trLinks.map((link) => {
-            if (post[link] === "") return null;
+          {links.map((link) => {
+            if (post.tr[link] === "") return null;
             return (
-              <a key={link} target="_blank" href={post[link]} className="btn">
-                {link === "gitMarkdownTr" ? "Github/Tr" : "Medium/Tr"}
+              <a
+                key={"en" + link}
+                target="_blank"
+                href={post.tr[link]}
+                className="btn"
+              >
+                {link === "git" ? "Github/Tr" : "Medium/Tr"}
               </a>
             );
           })}
