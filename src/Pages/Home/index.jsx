@@ -9,18 +9,34 @@ function Home() {
           <h1>Ersin Mutlu</h1>
           <p>Cloud & DevOps Engineer</p>
           <div className="home-buttons">
-            <a href="#" className="btn">
+            <a
+              href="https://drive.google.com/file/d/17TshJXz2NrbSpBrYixdyU0W6xIfXR9FK/view?usp=share_link"
+              className="btn"
+              target="_blank"
+            >
               CV
             </a>
-            <a href="#" className="btn">
+            <a
+              href="https://medium.com/@gorbadil"
+              target="_blank"
+              className="btn"
+            >
               Medium
             </a>
           </div>
           <div className="home-icons">
-            <a href="#" className="btn">
+            <a
+              href="https://www.linkedin.com/in/ersinm/"
+              target="_blank"
+              className="btn"
+            >
               <i className="fa-brands fa-linkedin"></i>
             </a>
-            <a href="#" className="btn">
+            <a
+              href="https://github.com/gorbadil"
+              target="_blank"
+              className="btn"
+            >
               <i className="fa-brands fa-github"></i>
             </a>
           </div>
