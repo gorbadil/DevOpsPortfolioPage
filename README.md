@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This is a portfolio website that showcases my projects and skills. Build with React + Vite
+This is a portfolio website that showcases my projects and skills. Build with React + Vite.
 
 ## Features
 
