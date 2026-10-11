@@ -1,0 +1,162 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import profilePic from "../assets/profile.jpeg";
+import { profile, about, experience, skills, projects, posts } from "../data/site";
+
+const year = new Date().getFullYear();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  worksFor: { "@type": "Organization", name: "EPAM Systems" },
+  url: Astro.site?.toString(),
+  sameAs: [profile.links.github, profile.links.linkedin, profile.links.medium],
+};
+---
+
+<Base>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="#top">ersin<span>@</span>mutlu</a>
+      <nav aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a class="keep" href="#contact">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">$ whoami</p>
+          <h1>{profile.name}</h1>
+          <p class="role">{profile.role}</p>
+          <p class="tagline">{profile.tagline}</p>
+          <div class="actions">
+            <a class="btn primary" href="/Ersin_Mutlu_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+            <a class="btn" href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <Image src={profilePic} alt="Portrait of Ersin Mutlu" width={352} height={352} loading="eager" />
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="wrap">
+        <h2>about</h2>
+        {about.map((p) => <p>{p}</p>)}
+        <div class="skills">
+          {skills.map((s) => (
+            <div class="card">
+              <h3>{s.group}</h3>
+              <ul class="chips">{s.items.map((i) => <li>{i}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <h2>experience</h2>
+        <div class="timeline">
+          {experience.map((job) => (
+            <article class="job">
+              <header>
+                <div>
+                  <h3>{job.role}</h3>
+                  <p class="company">{job.company}{job.context && ` · ${job.context}`}</p>
+                </div>
+                <span class="period">{job.period}</span>
+              </header>
+              <ul class="points">{job.points.map((p) => <li>{p}</li>)}</ul>
+              <ul class="chips">{job.skills.map((s) => <li>{s}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <h2>projects</h2>
+        <div class="grid">
+          {projects.map((p) => {
+            const Tag = p.href ? "a" : "div";
+            return (
+              <Tag class="card project" href={p.href} target={p.href ? "_blank" : undefined} rel={p.href ? "noopener" : undefined}>
+                <span class="tag">{p.tag}</span>
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+                <ul class="chips">{p.stack.map((s) => <li>{s}</li>)}</ul>
+              </Tag>
+            );
+          })}
+        </div>
+        <p class="note">Client work is described at a high level; source code and internal details stay private.</p>
+      </div>
+    </section>
+
+    <section id="blog">
+      <div class="wrap">
+        <h2>writing</h2>
+        <div class="posts">
+          {posts.map((post) => (
+            <div class="card post">
+              <div>
+                <h3>{post.title}</h3>
+                <p>{post.summary}</p>
+              </div>
+              <div class="langs">
+                <a href={post.en} target="_blank" rel="noopener">EN</a>
+                <a href={post.tr} target="_blank" rel="noopener">TR</a>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="note">More on <a href={profile.links.medium} target="_blank" rel="noopener">Medium</a>.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>contact</h2>
+        <p>Open to talking about cloud platforms, automation and DevOps. The fastest way to reach me is email or LinkedIn.</p>
+        <div class="actions">
+          <a class="btn primary" href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a class="btn" href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href={profile.links.medium} target="_blank" rel="noopener">Medium</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>© {year} {profile.name}</span>
+      <span class="mono">Built with Astro · Hosted on Vercel</span>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    document.getElementById("theme-toggle")?.addEventListener("click", () => {
+      const current =
+        root.dataset.theme ??
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const next = current === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch {}
+    });
+  </script>
+</Base>

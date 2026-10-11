@@ -1,52 +1,24 @@
-# Portfolio Website
+# Ersin Mutlu - Portfolio
 
-This is a portfolio website that showcases my projects and skills. Build with React + Vite.
+Personal portfolio built with [Astro](https://astro.build): a single static page, no client-side framework, automatic dark/light theme.
 
-## Features
+## Develop
 
-- [x] Responsive Design
-- [x] Dark Mode
-- [x] Project Showcase
-- [x] Blog Posts
-- [x] Skills Showcase
-- [x] Contact
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # type-check + static build into dist/
+```
 
-## Tech Stack
+Requires Node 22+.
 
-- React
-- Vite
+## Edit content
 
-## Installation with npm
+All text lives in `src/data/site.ts` (profile, experience, skills, projects, posts). The CV is `public/Ersin_Mutlu_CV.pdf`.
 
-1. Clone the repository
-2. Run `npm install`
-3. Run `npm run dev`
-4. Open `http://localhost:5173` in your browser
+## Deploy (Vercel)
 
-## Installation with yarn
+1. Import the repository in Vercel. The Astro preset is detected automatically (build `npm run build`, output `dist`).
+2. Optional: set `SITE_URL` (e.g. `https://ersinmutlu.dev`) so canonical, Open Graph and sitemap URLs use your custom domain. Without it, Vercel's production domain is used.
 
-1. Clone the repository
-2. Run `yarn install`
-3. Run `yarn dev`
-4. Open `http://localhost:5173` in your browser
-
-## Installation with Docker
-
-1. Clone the repository
-2. Run `docker build -t portfolio-website .`
-3. Run `docker run -p 3000:80 portfolio-website`
-4. Open `http://localhost:3000` in your browser
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Author
-
-- [Ersin Mutlu](https://ersinm.com)
-
-## Acknowledgements
-
-- [Vite](https://vitejs.dev)
-- [React](https://reactjs.org)
-- [React Router](https://reactrouter.com)
+Security and cache headers are configured in `vercel.json`. GitHub Actions (`.github/workflows/ci.yml`) verifies the build on every PR.
