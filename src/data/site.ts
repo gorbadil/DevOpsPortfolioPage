@@ -2,7 +2,7 @@ export const profile = {
   name: "Ersin Mutlu",
   role: "Cloud & DevOps Engineer",
   tagline:
-    "I build and automate cloud platforms on Azure: infrastructure as code, CI/CD and self-service tooling that lets data teams ship without waiting on ops.",
+    "Data DevOps on Azure: infrastructure as code, CI/CD and self-service tooling for Databricks and Data Factory platforms, so data teams ship without waiting on ops.",
   location: "Based in Türkiye",
   email: "ersin.mutlu@outlook.com.tr",
   links: {
@@ -13,14 +13,14 @@ export const profile = {
 };
 
 export const about = [
-  "I'm a Cloud & DevOps engineer at EPAM, working on the Danone OneHouse data platform. My days are Terraform, GitHub Actions, PowerShell and Azure: turning manual, ticket-driven operations into repeatable, self-service pipelines.",
+  "I'm a Cloud & DevOps engineer at EPAM, focused on Data DevOps: the platforms behind large-scale data engineering on Azure Databricks and Azure Data Factory. My days are Terraform, GitHub Actions, PowerShell and Azure, turning manual, ticket-driven operations into repeatable, self-service pipelines.",
   "I like platforms that stay boring in production: everything in code, every change reviewed, every deploy re-runnable. I also write about Linux, Docker, Kubernetes and CI/CD to keep my own knowledge honest.",
 ];
 
 export const experience = [
   {
     company: "EPAM Systems",
-    context: "Client: Danone, OneHouse data platform",
+    context: "Data platform for a global enterprise client",
     role: "Cloud & DevOps Engineer",
     period: "Aug 2024 - Present",
     points: [
@@ -35,9 +35,9 @@ export const experience = [
     company: "Patika.dev",
     context: "",
     role: "Frontend Technical Coordinator",
-    period: "Sep 2023 - Present",
+    period: "Sep 2023 - May 2025",
     points: [
-      "Coach and support learners in JavaScript and React bootcamps, reviewing their code and unblocking technical questions.",
+      "Coached and supported learners in JavaScript and React bootcamps, reviewing their code and unblocking technical questions.",
     ],
     skills: ["JavaScript", "React", "HTML", "CSS"],
   },
