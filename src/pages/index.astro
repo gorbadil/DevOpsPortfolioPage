@@ -19,6 +19,8 @@ const jsonLd = {
 <Base>
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
   <header class="site">
     <div class="wrap">
       <a class="brand" href="#top">ersin<span>@</span>mutlu</a>
@@ -47,7 +49,7 @@ const jsonLd = {
             <a class="btn" href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
-        <Image src={profilePic} alt="Portrait of Ersin Mutlu" width={352} height={352} loading="eager" />
+        <div class="avatar"><Image src={profilePic} alt="Portrait of Ersin Mutlu" width={352} height={352} loading="eager" /></div>
       </div>
     </section>
 
@@ -150,6 +152,9 @@ const jsonLd = {
 
   <script>
     const root = document.documentElement;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Theme toggle
     document.getElementById("theme-toggle")?.addEventListener("click", () => {
       const current =
         root.dataset.theme ??
@@ -158,5 +163,77 @@ const jsonLd = {
       root.dataset.theme = next;
       try { localStorage.setItem("theme", next); } catch {}
     });
+
+    // Scroll progress bar
+    const bar = document.getElementById("progress");
+    const onScroll = () => {
+      const max = root.scrollHeight - innerHeight;
+      if (bar) bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Reveal on scroll (staggered inside each group)
+    const targets = document.querySelectorAll<HTMLElement>(
+      "section:not(.hero) h2, .about p, .skills .card, .job, .grid .card, .post, .note, .contact p, .contact .actions",
+    );
+    if (reduced || !("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("in"));
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      );
+      targets.forEach((el) => {
+        const siblings = el.parentElement ? [...el.parentElement.children] : [];
+        el.style.setProperty("--i", String(Math.min(siblings.indexOf(el), 6)));
+        el.classList.add("reveal");
+        io.observe(el);
+      });
+    }
+
+    // Active nav link (scrollspy)
+    const links = new Map<string, HTMLAnchorElement>();
+    document.querySelectorAll<HTMLAnchorElement>("nav a[href^='#']").forEach((a) => links.set(a.hash.slice(1), a));
+    const spy = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            links.forEach((a) => a.removeAttribute("aria-current"));
+            links.get(e.target.id)?.setAttribute("aria-current", "true");
+          }
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    document.querySelectorAll("main section[id]").forEach((s) => spy.observe(s));
+
+    // Cursor spotlight on cards
+    document.querySelectorAll<HTMLElement>(".card").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        card.style.setProperty("--my", `${e.clientY - r.top}px`);
+      });
+    });
+
+    // Subtle tilt on the avatar
+    const avatar = document.querySelector<HTMLElement>(".avatar");
+    if (avatar && !reduced) {
+      avatar.addEventListener("pointermove", (e) => {
+        const r = avatar.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        avatar.style.transform = `perspective(600px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale(1.04)`;
+      });
+      avatar.addEventListener("pointerleave", () => (avatar.style.transform = ""));
+    }
   </script>
 </Base>
